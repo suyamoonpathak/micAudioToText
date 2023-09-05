@@ -3,8 +3,11 @@ import speech_recognition as sr
 import os
 from werkzeug.utils import secure_filename
 from pydub import AudioSegment
+from flask_cors import CORS
 
 app = Flask(__name__)
+app.config.from_object(__name__)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.route('/')
 def index():
